@@ -1,5 +1,6 @@
 package com.example.mydemo;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -8,13 +9,14 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
-
+    final static String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,23 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        init();
+    }
+
+    /// uri 解析
+    private void init() {
+        String url = "https://www.klook.com/zh-HK/event/2";
+        String url1 = "https://www.klook.com/zh-HK/event/2-hk-black-friday";
+        String url2 = "klook://event_detail/1002?city_id=2";
+        String url3 = "klook://event/2";
+        Uri uri = Uri.parse(url3);
+
+        Log.d(TAG, "scheme: " +  uri.getScheme());
+        Log.d(TAG, "host: " +  uri.getHost());
+        Log.d(TAG, "path: " +  uri.getPathSegments().get(uri.getPathSegments().size() -1 ).split("-")[0]);
+        Log.d(TAG, "query: " +  uri.getQuery());
+
     }
 
     @Override

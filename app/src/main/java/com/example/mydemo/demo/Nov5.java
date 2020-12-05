@@ -6,6 +6,7 @@ import java.util.Arrays;
  * @author jianxiong.deng
  * @date 2020/11/14
  * @des
+ * 数组中占比超过一半的元素称之为主要元素。给定一个整数数组，找到它的主要元素。若没有，返回-1。
  */
 class Nov5 {
     public static void main(String[] args) {
