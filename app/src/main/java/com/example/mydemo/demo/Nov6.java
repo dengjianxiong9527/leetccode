@@ -1,5 +1,7 @@
 package com.example.mydemo.demo;
 
+import java.util.Stack;
+
 /**
  * @author jianxiong.deng
  * @date 2020/11/14
@@ -56,4 +58,5 @@ class Nov6 {
 
         return listNode;
     }
+
 }
