@@ -45,7 +45,6 @@ class Dec6 {
         if(head == null && head.next == null)
             return head;
 
-
         ListNode next = head.next;
         swapPairs(next.next);
         next.next = head;
