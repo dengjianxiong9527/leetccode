@@ -1,4 +1,4 @@
-package com.example.mydemo.demo;
+package com.example.mydemo.demo.array;
 
 import java.util.ArrayList;
 import java.util.HashSet;

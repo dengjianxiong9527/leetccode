@@ -1,6 +1,4 @@
-package com.example.mydemo.demo;
-
-import java.util.Arrays;
+package com.example.mydemo.demo.array;
 
 /**
  * @author jianxiong.deng

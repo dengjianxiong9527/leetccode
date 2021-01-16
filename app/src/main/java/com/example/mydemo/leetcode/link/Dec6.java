@@ -1,4 +1,4 @@
-package com.example.mydemo.demo;
+package com.example.mydemo.demo.link;
 
 /**
  * @author jianxiong.deng
@@ -42,11 +42,13 @@ class Dec6 {
     }
 
     public static ListNode swapPairs(ListNode head) {
-        if(head == null && head.next == null)
+        if(head == null || head.next == null)
             return head;
 
         ListNode next = head.next;
-        swapPairs(next.next);
+//        System.out.println("a:" + next.val);
+        head.next = swapPairs(next.next);
+//        System.out.println("a1:" + head.val);
         next.next = head;
 
         return next;
@@ -58,4 +60,5 @@ class Dec6 {
 //            a++;
 //        }
 //    }
+
 }

@@ -1,4 +1,4 @@
-package com.example.mydemo.demo;
+package com.example.mydemo.demo.tree;
 
 /**
  * @author jianxiong.deng

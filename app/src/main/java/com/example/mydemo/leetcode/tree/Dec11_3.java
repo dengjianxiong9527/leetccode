@@ -1,4 +1,4 @@
-package com.example.mydemo.demo;
+package com.example.mydemo.demo.tree;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,8 +13,6 @@ import java.util.Stack;
  * @date 2020/12/11
  * @des 输入:
  * 二叉查找树的深度(height)和大小(size)
- * levelOrder  : 从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。
- * firstUniqChar : 字符串中只出现一次的第一个char
  */
 class Dec11_3 {
 
@@ -63,6 +61,7 @@ class Dec11_3 {
         }
     }
 
+    /// 二叉树的高度
     public static int maxDepth(TreeNode root) {
         if (root == null) {
             return 0;
@@ -73,7 +72,7 @@ class Dec11_3 {
         }
     }
 
-
+    /// 二叉树的节点数
     public static int SizeDepth(TreeNode root) {
         if (root == null) {
             return 0;
@@ -82,6 +81,7 @@ class Dec11_3 {
         }
     }
 
+    ///  * levelOrder 从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。
     public int[] levelOrder(TreeNode root) {
         if (root == null) return new int[0];
         Queue<TreeNode> queue = new LinkedList<>();
@@ -100,7 +100,7 @@ class Dec11_3 {
         return res;
 
     }
-
+    ///* firstUniqChar : 字符串中只出现一次的第一个char
     public char firstUniqChar(String s) {
         List<String> list = new ArrayList<>();
         Set<String> setChar = new HashSet<>();

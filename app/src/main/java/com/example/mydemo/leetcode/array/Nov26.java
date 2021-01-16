@@ -1,6 +1,4 @@
-package com.example.mydemo.demo;
-
-import java.util.Collections;
+package com.example.mydemo.demo.array;
 
 /**
  * @author jianxiong.deng

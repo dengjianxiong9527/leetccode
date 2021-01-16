@@ -1,4 +1,4 @@
-package com.example.mydemo.demo;
+package com.example.mydemo.demo.link;
 
 import java.util.Stack;
 
@@ -42,28 +42,30 @@ class dec3 {
     }
 
     static class Solution {
+
+        //  * @des 输入: 1->2->3->4->5->NULL
+        // * 输出: 5->4->3->2->1->NULL
         public ListNode reverseList(ListNode head) {
-
-            ListNode prev = null;
-            ListNode next = null;
-
-            while (head.next != null) {
-                next = head.next;
-                head.next = prev;
-
-                prev = head;
-
-                head = next;
+            ListNode cur = null;
+            ListNode pre = head;
+            while (pre != null){
+                ListNode next = pre.next;
+                pre.next = cur;
+                cur = pre;
+                pre = next;
             }
-            head.next = prev;
-
-            while (head != null) {
-                System.out.print(head.val);
-                head = head.next;
-            }
-            return head;
+            return cur;
         }
 
+        /// 递归 的方法反转
+        public ListNode  reverseA(ListNode head, ListNode pre){
+            ListNode next = head.next;
+            head.next = pre;
+            return reverseA(next, head);
+        }
+
+        //  * @des 输入: 1->2->3->4->5->NULL
+        // * 输出: 5->4->3->2->1->NULL
         public  ListNode reverse(ListNode head){
             ListNode cur = null;
             ListNode pre = head;
