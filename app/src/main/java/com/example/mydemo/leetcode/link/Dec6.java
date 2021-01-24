@@ -1,11 +1,11 @@
-package com.example.mydemo.demo.link;
+package com.example.mydemo.leetcode.link;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author jianxiong.deng
  * @date 2020/12/7
- * @des 给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
- * 输入：head = [1,2,3,4]
- * 输出：[2,1,4,3]
  */
 class Dec6 {
 
@@ -20,7 +20,9 @@ class Dec6 {
         listNode3.next = listNode4;
 
         Dec6 solution = new Dec6();
-        solution.swapPairs(listNode);
+       // solution.swapPairs(listNode);
+
+        solution.reversePrint(listNode);
 
     }
 
@@ -41,9 +43,13 @@ class Dec6 {
         }
     }
 
+    //  * @des 给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
+    // * 输入：head = [1,2,3,4]
+    // * 输出：[2,1,4,3]
     public static ListNode swapPairs(ListNode head) {
-        if(head == null || head.next == null)
+        if (head == null || head.next == null) {
             return head;
+        }
 
         ListNode next = head.next;
 //        System.out.println("a:" + next.val);
@@ -54,11 +60,22 @@ class Dec6 {
         return next;
     }
 
-//    public int[] reversePrint(ListNode head) {
-//        int a = 0;
-//        while (head != null){
-//            a++;
-//        }
-//    }
+    //输入：head = [1,3,2]
+    //输出：[2,3,1]
+    public int[] reversePrint(ListNode head) {
+        List<Integer> list = new ArrayList<>();
+        while (head != null){
+            list.add(head.val);
+            head = head.next;
+        }
+        int[] a = new int[list.size()];
+        for(int i = 0; i < list.size(); i++){
+            a[i] = list.get(list.size() - i - 1);
+            System.out.println("a: " + i + "---" + a[i]);
+        }
+
+        return a;
+    }
+
 
 }

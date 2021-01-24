@@ -1,4 +1,4 @@
-package com.example.mydemo.demo.link;
+package com.example.mydemo.leetcode.link;
 
 /**
  * @author jianxiong.deng
@@ -41,7 +41,11 @@ public class Dec8 {
         }
     }
 
-    private  ListNode Solution(ListNode listNode1, ListNode listNode2) {
+    //输入：1->2->4, 1->3->4
+    //输出：1->1->2->3->4->4
+    //输入两个递增排序的链表，合并这两个链表并使新链表中的节点仍然是递增排序的。
+
+    private ListNode Solution(ListNode listNode1, ListNode listNode2) {
         ListNode listNode = new ListNode(-1);
 
         ListNode prev = listNode;

@@ -4,9 +4,9 @@ package com.example.mydemo.theard;
  * @author jianxiong.deng
  * @date 2021/1/12
  * @des 线程间的协作 notify
- * 
+ *
  */
-class ThreadNotifyDemo {
+class ObjectNotifyDemo {
 
     public synchronized void testWait() {
         System.out.println(Thread.currentThread().getName() + "Start-----");
@@ -19,7 +19,7 @@ class ThreadNotifyDemo {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        final ThreadNotifyDemo threadDemo = new ThreadNotifyDemo();
+        final ObjectNotifyDemo threadDemo = new ObjectNotifyDemo();
 
         for(int i = 0 ; i < 5; i++){
             new Thread(new Runnable() {

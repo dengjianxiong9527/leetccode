@@ -1,4 +1,4 @@
-package com.example.mydemo.demo.tree;
+package com.example.mydemo.leetcode.tree;
 
 import java.util.ArrayList;
 import java.util.HashSet;

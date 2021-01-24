@@ -1,11 +1,9 @@
-package com.example.mydemo.demo;
+package com.example.mydemo.leetcode;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author jianxiong.deng

@@ -4,8 +4,9 @@ package com.example.mydemo.theard;
  * @author jianxiong.deng
  * @date 2021/1/12
  * @des 线程间的协作 wait
+ * wait 会释放出锁 并且依赖同步
  */
-class ThreadWaitDemo {
+class ObjectWaitDemo {
 
     public synchronized void testWait() {
         System.out.println("Start-----");
@@ -18,7 +19,7 @@ class ThreadWaitDemo {
     }
 
     public static void main(String[] args) {
-        final ThreadWaitDemo threadDemo = new ThreadWaitDemo();
+        final ObjectWaitDemo threadDemo = new ObjectWaitDemo();
         new Thread(new Runnable() {
             @Override
             public void run() {

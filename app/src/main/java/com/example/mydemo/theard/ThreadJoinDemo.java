@@ -4,29 +4,32 @@ package com.example.mydemo.theard;
  * @author jianxiong.deng
  * @date 2021/1/12
  * @des
+ * 没有使用join方法之间，线程是并发执行的，而使用join方法后，所有线程是顺序执行的
  */
-class ThreadYieldDemo implements Runnable {
+class ThreadJoinDemo implements Runnable {
 
     @Override
     public void run() {
         try {
-            Thread.sleep(100);
+            System.out.println(Thread.currentThread().getName() + " start-----");
+            Thread.sleep(1000);
+            System.out.println(Thread.currentThread().getName() + " end------");
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-        for (int i = 0; i < 5; i++) {
-            System.out.println(Thread.currentThread().getName() + ": " + i);
-            Thread.yield();
         }
     }
 
     public static void main(String[] args) {
-        ThreadYieldDemo threadYieldDemo = new ThreadYieldDemo();
+        for(int i = 0; i < 5; i++){
+          Thread thread = new Thread(new ThreadJoinDemo());
+          thread.start();
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
-        Thread t1 = new Thread(threadYieldDemo, "FirstThread");
-        Thread t2 = new Thread(threadYieldDemo, "SecondThread");
-
-        t1.start();
-        t2.start();
+        System.out.println("Finished~~~");
     }
 }

@@ -1,12 +1,8 @@
-package com.example.mydemo.demo.link;
-
-import java.util.Stack;
+package com.example.mydemo.leetcode.link;
 
 /**
  * @author jianxiong.deng
  * @date 2020/12/3
- * @des 输入: 1->2->3->4->5->NULL
- * 输出: 5->4->3->2->1->NULL
  * 输入：单向链表a->b->c->d->e->f中的节点c
  * 结果：不返回任何数据，但该链表变为a->b->d->e->f
  */
@@ -25,11 +21,11 @@ class dec3 {
         listNode4.next = listNode5;
 
         Solution solution = new Solution();
-      //  solution.reverseList(listNode);
-       // solution.reverse(listNode);
+        //  solution.reverseList(listNode);
+        // solution.reverse(listNode);
         //solution.reverseBetween(listNode, 2, 4);
         solution.deleteValNode(listNode, 3);
-      //  solution.deleteValNode(listNode, 1);
+        //  solution.deleteValNode(listNode, 1);
     }
 
     public static class ListNode {
@@ -48,7 +44,7 @@ class dec3 {
         public ListNode reverseList(ListNode head) {
             ListNode cur = null;
             ListNode pre = head;
-            while (pre != null){
+            while (pre != null) {
                 ListNode next = pre.next;
                 pre.next = cur;
                 cur = pre;
@@ -57,8 +53,11 @@ class dec3 {
             return cur;
         }
 
+
         /// 递归 的方法反转
-        public ListNode  reverseA(ListNode head, ListNode pre){
+        // * @des 输入: 1->2->3->4->5->NULL
+        // * 输出: 5->4->3->2->1->NULL
+        public ListNode reverseA(ListNode head, ListNode pre) {
             ListNode next = head.next;
             head.next = pre;
             return reverseA(next, head);
@@ -66,11 +65,11 @@ class dec3 {
 
         //  * @des 输入: 1->2->3->4->5->NULL
         // * 输出: 5->4->3->2->1->NULL
-        public  ListNode reverse(ListNode head){
+        public ListNode reverse(ListNode head) {
             ListNode cur = null;
             ListNode pre = head;
 
-            while (pre != null){
+            while (pre != null) {
                 ListNode listNode = pre.next;
                 pre.next = cur;
                 cur = pre;
@@ -82,7 +81,7 @@ class dec3 {
                 System.out.print(cur.val);
                 cur = cur.next;
             }
-            return  cur;
+            return cur;
         }
 
         /// 反转从位置 m 到 n 的链表。请使用一趟扫描完成反转。
@@ -93,13 +92,13 @@ class dec3 {
             ListNode pre = head;
 
 
-            while (pre != null){
+            while (pre != null) {
                 c++;
                 ListNode listNode = pre.next;
-                if( c >= m && c <= n){
+                if (c >= m && c <= n) {
                     pre.next = cur;
                     cur = pre;
-                }else {
+                } else {
                     head1 = pre;
                 }
                 pre = listNode;
@@ -109,20 +108,20 @@ class dec3 {
                 System.out.print(cur.val);
                 cur = cur.next;
             }
-            return  cur;
+            return cur;
         }
 
         /// 根据索引删除指定节点
-        public  void deleteNode(ListNode node, int val) {
+        public void deleteNode(ListNode node, int val) {
             int a = 0;
             ListNode head = node;
-            while (head != null){
+            while (head != null) {
                 a++;
-                if(a + 1 == val){
-                    if( head.next != null &&  head.next.next != null){
+                if (a + 1 == val) {
+                    if (head.next != null && head.next.next != null) {
                         head.next = head.next.next;
                         break;
-                    }else {
+                    } else {
                         head.next = null;
                     }
                 }
@@ -134,24 +133,18 @@ class dec3 {
                 node = node.next;
             }
         }
+
         /// 删除指定节点
-        public  ListNode deleteValNode(ListNode node, int val) {
-            //虚拟头节点的值用不到，随意赋值
-            ListNode dummyHead = new ListNode(0);
-            dummyHead.next = node;
-
-            ListNode prev = dummyHead;
-
-            while (prev.next != null){
-
+        public ListNode deleteValNode(ListNode node, int val) {
+            if(node.val == val) return node.next;
+            ListNode listNode = node;
+            while (listNode.next.val != val){
+                listNode = listNode.next;
             }
-
-            while (dummyHead != null) {
-                System.out.print(dummyHead.val);
-                dummyHead = dummyHead.next;
+            if(listNode.next != null){
+                listNode.next = listNode.next.next;
             }
-
-            return dummyHead.next;
+            return node;
         }
     }
 
