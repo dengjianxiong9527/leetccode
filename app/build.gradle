@@ -20,9 +20,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        profile {
+            initWith debug
+        }
+
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -39,8 +45,20 @@ dependencies {
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'org.ow2.asm:asm-all:5.2'
+    debugImplementation 'com.example.flutter_cs:flutter_debug:1.0'
+    profileImplementation 'com.example.flutter_cs:flutter_profile:1.0'
+    releaseImplementation 'com.example.flutter_cs:flutter_release:1.0'
+
 
 }
 repositories {
     mavenCentral()
+
+    maven {
+        url '/Users/klook/Desktop/MyDemo/flutter_cs/build/host/outputs/repo'
+    }
+    maven {
+        url 'https://storage.googleapis.com/download.flutter.io'
+    }
+
 }

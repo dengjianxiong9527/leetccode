@@ -36,6 +36,8 @@ class Nov4 {
 //        wordBreak("catsandog", list);
 //        maxProfit(new int[]{7,1,5,3,6,4});
           minPathSum(new int[][]{{1,3,1}, {1,5,1}, {4,2,1}});
+          maxSubArray(new int[]{-2,1,-3,4,-1,2,1,-5,4});
+
     }
 
     public static int minPathSum(int[][] grid) {
@@ -107,17 +109,16 @@ class Nov4 {
         }
         return record[i - 1][j - 1];
     }
+    //输入一个整型数组，数组中的一个或连续多个整数组成一个子数组。求所有子数组的和的最大值。
+    //输入: nums = [-2,1,-3,4,-1,2,1,-5,4]
+    //输出: 6
+    //解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
 
     public static int maxSubArray(int[] nums) {
-        int sum = 0;
         int ans = nums[0];
-        for (int i = 0; i < nums.length; i++) {
-            if (sum > 0) {
-                sum += nums[i];
-            } else {
-                sum = nums[i];
-            }
-            ans = Math.max(ans, sum);
+        for (int i = 1; i < nums.length; i++) {
+            nums[i] += Math.max(nums[i - 1], 0);
+            ans = Math.max(ans, nums[i]);
         }
         return ans;
     }
@@ -146,5 +147,23 @@ class Nov4 {
             right++;
         }
         return right - left - 1;
+    }
+
+    //写一个函数，求两个整数之和，要求在函数体内不得使用 “+”、“-”、“*”、“/” 四则运算符号。
+    public int add(int a, int b){
+        if(a == 0 || b == 0){
+            return a == 0 ? b : a;
+        }
+
+        int sum = 0, carry = 0;
+
+        while (b != 0){
+            sum = a ^ b;
+            carry =  (a & b) << 1 ;
+
+            a = sum;
+            b = carry;
+        }
+        return a;
     }
 }

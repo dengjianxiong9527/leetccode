@@ -16,6 +16,7 @@ class Dec15 {
         //dec15.reverseString("hello".toCharArray());
 
         dec15.twoSum(new int[]{2,7,8,11,15}, 9);
+        dec15.spiralOrder(new int[][]{{1, 2, 3},{4, 5, 6}, {7, 8, 9} });
     }
 
     public int countSegments(String s) {
@@ -66,6 +67,38 @@ class Dec15 {
             }
         }
         return new int[]{};
+    }
+
+    public int[] spiralOrder(int[][] matrix) {
+        int row = matrix.length;
+        int columns = matrix[0].length;
+
+        int[] a = new int[row * columns];
+
+        int l = 0, r = matrix[0].length - 1, t = 0, b = matrix.length - 1;
+        int x = 0;
+        while (true){
+            for(int i = l ; i <= r; i++){
+                a[x++] = matrix[t][i];
+            }
+            if(++t > b) break;
+
+            for(int i = t; i<= b; i++){
+                a[x++] = matrix[i][b];
+            }
+            if(l > r--) break;
+            for(int i = r; i>= l; i--){
+                a[x++] =matrix[b][i];
+            }
+            if(t > --b) break;
+            for(int i = b; i >= t; i--){
+                a[x++] = matrix[i][l];
+            }
+            if(++l > r) break;
+        }
+
+
+        return a;
     }
 
 }

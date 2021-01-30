@@ -1,5 +1,7 @@
 package com.example.mydemo.leetcode.array;
 
+import java.util.Stack;
+
 /**
  * @author jianxiong.deng
  * @date 2020/11/27
@@ -11,6 +13,8 @@ class Nov26 {
         Nov26 nov26 = new Nov26();
         nov26.sortedSquares(new int[]{-4, -1, 0, 3, 10});
         nov26.compressString("aabcccccaaa");
+
+        nov26.reverseWords("the sky is blue");
     }
 
     public int[] sortedSquares(int[] A) {
@@ -80,11 +84,37 @@ class Nov26 {
     public int search(int[] nums, int target) {
         int count = 0;
         for (int i = 0; i < nums.length; i++) {
-            if(target == nums[i]){
-                count ++;
+            if (target == nums[i]) {
+                count++;
             }
         }
-        return  count;
+        return count;
+    }
+
+    //输入一个英文句子，翻转句子中单词的顺序，但单词内字符的顺序不变。为简单起见，标点符号和普通字母一样处理。例如输入字符串"I am a student. "，则输出"student. a am I"。
+    public String reverseWords(String s) {
+        String[] a = s.split(" ");
+        StringBuilder stringBuilder = new StringBuilder();
+        Stack<String> strings = new Stack<>();
+        for (int i = 0; i < a.length; i++) {
+            if(!a[i].isEmpty()){
+                strings.push(a[i]);
+            }
+        }
+        int size = strings.size();
+        int count = 0;
+        while (!strings.isEmpty()){
+
+            count++;
+
+            stringBuilder.append(strings.pop());
+            if(count < size){
+                stringBuilder.append(" ");
+            }
+        }
+
+        System.out.println("stringBuilder:" + stringBuilder.toString() + "---");
+        return stringBuilder.toString();
     }
 
 

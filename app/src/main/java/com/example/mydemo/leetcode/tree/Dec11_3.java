@@ -1,6 +1,7 @@
 package com.example.mydemo.leetcode.tree;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -40,6 +41,9 @@ class Dec11_3 {
 
         Dec11_3 dec11_3 = new Dec11_3();
         dec11_3.levelOrder1(treeNode);
+
+        dec11_3.stackMirrorTree(treeNode);
+        dec11_3.kthLargest(treeNode, 1);
     }
 
     public static class TreeNode {
@@ -180,6 +184,41 @@ class Dec11_3 {
 
         }
         return listsAll;
+    }
+
+   // 给定一棵二叉搜索树，请找出其中第k大的节点。
+    public int kthLargest(TreeNode root, int k) {
+        List<Integer> integerList = new ArrayList<>();
+        Queue<TreeNode> treeNodeQueue = new LinkedList<>();
+        treeNodeQueue.add(root);
+        while (!treeNodeQueue.isEmpty()){
+            TreeNode treeNode = treeNodeQueue.poll();
+            integerList.add(treeNode.val);
+            if (treeNode.left != null) treeNodeQueue.add(treeNode.left);
+            if (treeNode.right != null) treeNodeQueue.add(treeNode.right);
+        }
+        int[] a =toIntArray(integerList);
+        Arrays.sort(a);
+        System.out.println("i:" +  a[a.length -k]);
+
+        return a[a.length - k];
+    }
+    int[] toIntArray(List<Integer> list){
+        int[] ret = new int[list.size()];
+        for(int i = 0;i < ret.length;i++)
+            ret[i] = list.get(i);
+        return ret;
+    }
+
+
+    public boolean isBalanced(TreeNode root) {
+        if (root == null) return true;
+        return Math.abs(depth(root.left) - depth(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right);
+    }
+
+    private int depth(TreeNode treeNode){
+        if(treeNode == null) return 0;
+        return Math.max(depth(treeNode.left), depth(treeNode.right)) + 1;
     }
 
 }

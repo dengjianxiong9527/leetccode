@@ -20,6 +20,8 @@ class Dec1 {
         dec11.replaceSpace("We are happy.");
 
         dec11.printNumbers(1);
+
+        dec11.sumNums(3);
     }
 
     // * 输入:
@@ -115,15 +117,26 @@ class Dec1 {
     public int[] printNumbers(int n) {
         int k = 1;
 
-        for(int i = 0; i < n; i++){
-             k = k * 10;
+        for (int i = 0; i < n; i++) {
+            k = k * 10;
         }
         int a[] = new int[k];
 
-        for(int i = 0; i < a.length - 1 ; i ++){
+        for (int i = 0; i < a.length - 1; i++) {
             a[i] = i + 1;
         }
         return a;
     }
+
+    //求 1+2+...+n ，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。
+    int res;
+
+    public int sumNums(int n) {
+        boolean x = n > 1 && (sumNums(n - 1)) > 0;
+        res += n;
+        System.out.println("res:" + res);
+        return n;
+    }
+
 
 }
